@@ -76,4 +76,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #Devise Config - uncomment when ready to deploy and provide url of application
+  # config.action_mailer.default_url_options = { host: 'HEROKUAPPNAME' }
+
 end
