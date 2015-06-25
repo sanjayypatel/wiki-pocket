@@ -78,6 +78,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #Devise Config - uncomment when ready to deploy and provide url of application
-  # config.action_mailer.default_url_options = { host: 'HEROKUAPPNAME' }
+  config.action_mailer.default_url_options = { host: 'wiki-pocket.herokuapp.com' }
 
 end
