@@ -1,0 +1,8 @@
+<div class="col-md-8">
+  <%= render partial: 'wikis/wiki', locals: {wiki: @wiki, sample_body: @sample_body} %>
+</div>
+<div class="col-md-4">
+  <% if current_user %>
+    <%= render partial: 'users/controls' %>
+  <% end %>
+</div>

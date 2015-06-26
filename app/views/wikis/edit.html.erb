@@ -1,0 +1,10 @@
+<div class="col-md-8">
+  <h1>Edit <%= @wiki.title %></h1>
+  <%= render partial: 'wikis/form', locals: {wiki: @wiki} %>
+</div>
+
+<div class="col-md-4">
+  <% if current_user %>
+    <%= render partial: 'users/controls' %>
+  <% end %>
+</div>

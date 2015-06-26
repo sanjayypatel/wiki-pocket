@@ -1,0 +1,9 @@
+<div class="panel panel-info">
+  <div class="panel-heading clearfix">
+    <h2 class="pull-left"><%= link_to wiki.title, wiki_path(wiki) %></h2>
+    <%= render partial: 'wikis/controls', locals: {wiki: wiki} %>
+  </div>
+  <div class="panel-body">
+    <p><%= (sample_body ? truncate(wiki.body, length: 250) : wiki.body) %></p>
+  </div>
+</div>

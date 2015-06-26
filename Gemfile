@@ -60,3 +60,5 @@ gem 'pry-rails', :group => :development
 
 # Figaro for sensitive data
 gem 'figaro'
+
+gem 'faker'
