@@ -6,4 +6,22 @@ class User < ActiveRecord::Base
          :confirmable
   has_many :wikis
   validates :username, uniqueness: true
+
+  after_initialize :init
+
+  def admin?
+    role == 'admin'
+  end
+
+  def premium?
+    role == 'premium'
+  end
+
+  def standard?
+    role == 'standard'
+  end
+
+  def init
+    self.role ||= 'standard'  
+  end
 end

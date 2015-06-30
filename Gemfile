@@ -62,3 +62,5 @@ gem 'pry-rails', :group => :development
 gem 'figaro'
 
 gem 'faker'
+
+gem 'pundit'
