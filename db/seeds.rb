@@ -8,6 +8,15 @@ user.skip_confirmation!
 user.save!
 
 user = User.new(
+  username: "premium",
+  email: "premium@example.com",
+  password: 'helloworld',
+  role: 'premium'
+  )
+user.skip_confirmation!
+user.save!
+
+user = User.new(
   username: "member",
   email: "member@example.com",
   password: 'helloworld'
@@ -15,7 +24,7 @@ user = User.new(
 user.skip_confirmation!
 user.save!
 
-3.times do |n|
+7.times do |n|
 
   user = User.new(
     username: "user#{n}",
@@ -27,7 +36,7 @@ user.save!
 end
 users = User.all
 
-10.times do |n|
+20.times do |n|
 
   wiki = Wiki.new(
     title: "Wiki Title #{n}",
