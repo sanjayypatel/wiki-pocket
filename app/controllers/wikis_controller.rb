@@ -1,12 +1,10 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.all.by_recently_updated
-    @sample_body = true
+    @wikis = Wiki.most_recently_updated
   end
 
   def show
     @wiki = Wiki.find(params[:id])
-    @sample_body = false
   end
 
   def new

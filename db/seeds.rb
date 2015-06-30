@@ -22,7 +22,7 @@ users = User.all
 
   wiki = Wiki.new(
     title: "Wiki Title #{n}",
-    body: Faker::Lorem.paragraph(5),
+    body: Faker::Lorem.paragraph(10),
     private: false,
     user: users.sample
     )

@@ -1,5 +1,8 @@
 <div class="col-md-8">
-  <%= render partial: 'wikis/wiki', collection: @wikis, locals: {sample_body: @sample_body} %>
+  <h2>Recently Updated Wikis</h2>
+  <% @wikis.each do |wiki| %>
+    <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
+  <% end %>
 </div>
 <div class="col-md-4">
   <% if current_user %>
