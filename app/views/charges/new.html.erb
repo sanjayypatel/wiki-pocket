@@ -1,0 +1,14 @@
+<div class="col-md-8">
+  <h2>Want to upgrade to a premium account?</h2>
+  <%= form_tag charges_path do %>
+    <h4>For $15 USD your account will be upgraded to a premium acount.</h4>
+    <script class="stripe-button" src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" data-email="<%= @stripe_btn_data[:email] %>" ></script>
+  <% end %>
+</div>
+<div class="col-md-4">
+  <h2>With a Premium Account you can:</h2>
+  <ul>
+    <li>Create Private Wikis</li>
+    <li>Add Collaborators to your private wikis.</li>
+  </ul>
+</div>
