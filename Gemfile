@@ -64,3 +64,6 @@ gem 'figaro'
 gem 'faker'
 
 gem 'pundit'
+
+# Use Stripe for payment processing
+gem 'stripe'
