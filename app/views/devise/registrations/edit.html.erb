@@ -52,6 +52,19 @@
       <% end %>
     </div>
   </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3>Account Type</h3>
+    </div>
+    <div class="panel-body">
+      <h4><%= current_user.role.capitalize %></h4>
+      <% if current_user.standard? %>
+        <%= link_to "Upgrade to Premium", user_upgrade_path(current_user), class: 'btn btn-success', method: :post%>
+      <% elsif current_user.premium? %>
+        <%= link_to "Downgrade", user_downgrade_path(current_user), class: 'btn btn-danger', method: :post %>
+      <% end %>
+    </div>
+  </div>
   <div class="panel panel-danger">
     <div class="panel-heading">
       <h3>Cancel my account</h3>

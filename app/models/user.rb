@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   end
 
   def init
-    self.role ||= 'standard'  
+    self.role ||= 'standard'
   end
+
+
 end

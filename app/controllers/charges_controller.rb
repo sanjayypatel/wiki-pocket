@@ -26,11 +26,15 @@ class ChargesController < ApplicationController
     )
 
     flash[:success] = "Thanks for your payment, #{current_user.email}!"
-    redirect_to edit_user_registration_path(current_user)
+    #### How do I trigger the UsersController#upgrade method? ####
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
+  end
+
+  def upgrade_user(user)
+
   end
 
   class Amount
@@ -38,5 +42,7 @@ class ChargesController < ApplicationController
       return 15_00
     end
   end
+
+
 
 end
