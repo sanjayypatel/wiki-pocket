@@ -1,0 +1,5 @@
+<h2>Want to downgrade to a standard account?</h2>
+<p>When you downgrade from premium to standard, any private wikis you created will be converted into public wikis automatically.</p>
+<p>You will also no longer be able to create, edit and delete private wikis that have been shared with you by other users.</p>
+
+<%= link_to "Yes, downgrade my account.", user_downgrade_path(current_user), class: 'btn btn-danger', method: :post, data: {confirm: "Are you sure?"} %>

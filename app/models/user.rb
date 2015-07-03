@@ -25,5 +25,12 @@ class User < ActiveRecord::Base
     self.role ||= 'standard'
   end
 
+  def upgrade
+    self.update_attribute(:role, 'premium') if self.standard?
+  end
+
+  def downgrade
+    self.update_attribute(:role, 'standard') if self.premium?
+  end
 
 end

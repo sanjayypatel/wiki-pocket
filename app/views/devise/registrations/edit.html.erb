@@ -59,9 +59,9 @@
     <div class="panel-body">
       <h4><%= current_user.role.capitalize %></h4>
       <% if current_user.standard? %>
-        <%= link_to "Upgrade to Premium", user_upgrade_path(current_user), class: 'btn btn-success', method: :post%>
+        <%= link_to "Upgrade to Premium", new_charge_path, class: 'btn btn-success' %>
       <% elsif current_user.premium? %>
-        <%= link_to "Downgrade", user_downgrade_path(current_user), class: 'btn btn-danger', method: :post %>
+        <%= button_to "Downgrade to Standard", new_charge_path, class: 'btn btn-danger', method: :get %>
       <% end %>
     </div>
   </div>
