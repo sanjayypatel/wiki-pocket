@@ -4,7 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
+  has_many :collaborations
   has_many :wikis
+  has_many :shared_wikis, through: :collaborations, source: :wiki
+
   validates :username, uniqueness: true
 
   after_initialize :init
