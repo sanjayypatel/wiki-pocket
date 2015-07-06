@@ -1,4 +1,13 @@
 user = User.new(
+  username: "admin",
+  email: "admin@example.com",
+  password: 'helloworld',
+  role: 'admin'
+  )
+user.skip_confirmation!
+user.save!
+
+user = User.new(
   username: "member",
   email: "member@example.com",
   password: 'helloworld'
@@ -6,7 +15,7 @@ user = User.new(
 user.skip_confirmation!
 user.save!
 
-5.times do |n|
+3.times do |n|
 
   user = User.new(
     username: "user#{n}",
