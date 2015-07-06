@@ -1,12 +1,12 @@
 class WikisController < ApplicationController
   def index
-    @wikis = policy_scope(Wiki).most_recently_updated
-    authorize @wikis
+    @wikis = policy_scope(Wiki)
   end
 
   def show
     @wiki = Wiki.find(params[:id])
     authorize @wiki
+    @collaboration = Collaboration.new
   end
 
   def new
@@ -29,6 +29,7 @@ class WikisController < ApplicationController
   def edit
     @wiki = Wiki.find(params[:id])
     authorize @wiki
+    @collaboration = Collaboration.new
   end
 
   def update

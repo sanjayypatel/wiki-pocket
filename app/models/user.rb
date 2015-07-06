@@ -4,8 +4,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
+  has_many :collaborations
   has_many :wikis
+  has_many :shared_wikis, through: :collaborations, source: :wiki
+
   validates :username, uniqueness: true
+
+  scope :all_except, -> (user){ where.not(id: user) }
+  scope :exclude_collaborators, -> (wiki){where.not(id: wiki.users)}
 
   after_initialize :init
 
@@ -21,8 +27,8 @@ class User < ActiveRecord::Base
     role == 'standard'
   end
 
-  def is_owner_of(wiki)
-    admin? || (premium? && (wiki.user == self || wiki.new_record?))
+  def is_owner_of?(wiki)
+    admin? || wiki.user == self || wiki.new_record?
   end
 
   def init

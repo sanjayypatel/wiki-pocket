@@ -1,5 +1,4 @@
 <div class="col-md-8">
-  <h2>Recently Updated Wikis</h2>
   <% @wikis.each do |wiki| %>
     <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
   <% end %>
