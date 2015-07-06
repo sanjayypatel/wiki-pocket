@@ -21,16 +21,22 @@ class User < ActiveRecord::Base
     role == 'standard'
   end
 
+  def is_owner_of(wiki)
+    admin? || wiki.user == self || wiki.new_record?
+  end
+
   def init
     self.role ||= 'standard'
   end
 
   def upgrade
-    self.update_attribute(:role, 'premium') if self.standard?
+    self.update_attribute(:role, 'premium')
   end
 
   def downgrade
-    self.update_attribute(:role, 'standard') if self.premium?
+    private_wikis = self.wikis.only_private
+    private_wikis.each { |wiki| wiki.make_public }
+    self.update_attribute(:role, 'standard')
   end
 
 end

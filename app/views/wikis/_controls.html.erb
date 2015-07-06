@@ -1,9 +1,14 @@
 <div class="btn-group pull-right wiki-heading-button-group">
+  <% if wiki.public? %>
+    <p class="btn btn-sm btn-primary">Public</p>
+  <% else %>
+    <p class="btn btn-sm btn-warning">Private</p>
+  <% end %>
   <%= link_to wiki.user.username, edit_user_registration_path, class: 'btn btn-sm btn-info' %>
   <% if policy(wiki).edit? %>
     <%= link_to "Edit", edit_wiki_path(wiki), class: 'btn btn-sm btn-success' %>
   <% end %>
   <% if policy(wiki).destroy? %>
-    <%= link_to "Delete Wiki", wiki, method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %> 
+    <%= link_to "Delete", wiki, method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %> 
   <% end %>
 </div>

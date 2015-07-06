@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :wikis
   resources :charges, only: [:new, :create]
   root to: 'welcome#index'
+  get '/help', to: 'welcome#help'
 
 end
