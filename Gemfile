@@ -67,3 +67,5 @@ gem 'pundit'
 
 # Use Stripe for payment processing
 gem 'stripe'
+
+gem 'redcarpet'
