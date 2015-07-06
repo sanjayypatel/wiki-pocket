@@ -4,7 +4,7 @@
   <% else %>
     <p class="btn btn-sm btn-warning disabled">Private</p>
   <% end %>
-  <%= link_to wiki.user.username, edit_user_registration_path, class: 'btn btn-sm btn-info' %>
+  <%= link_to wiki.user.username, user_path(wiki.user), class: 'btn btn-sm btn-info' %>
   <% if policy(wiki).edit? %>
     <%= link_to "Edit", edit_wiki_path(wiki), class: 'btn btn-sm btn-success' %>
   <% end %>

@@ -1,0 +1,15 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <% if user_signed_in? && user == current_user %>
+        <h4><%= user.username %> Info <%= link_to "Edit", edit_user_registration_path(user), class: 'btn btn-sm btn-success' %></h4>
+    <% else %>
+      <h4><%= user.username %> Info</h4>
+    <% end %>
+  </div>
+  <div class="panel-body">
+    <p>Email: <%= user.email %></p>
+    <p>Account Type: <%= user.role.capitalize %></p>
+    <p>Wikis: <%= user.wikis.count %></p>
+    <p>Shared Wikis: <%= user.shared_wikis.count %></p>
+  </div>
+</div>

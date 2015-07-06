@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :users, only: [:update] do
+  resources :users, only: [:update, :show] do
     post 'downgrade' => 'users#downgrade', as: :downgrade 
   end
   resources :wikis do 

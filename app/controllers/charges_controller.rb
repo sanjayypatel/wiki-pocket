@@ -27,7 +27,7 @@ class ChargesController < ApplicationController
 
     current_user.upgrade
     flash[:success] = "Thanks for your payment, #{current_user.email}!"
-    redirect_to edit_user_registration_path(current_user)
+    redirect_to user_path(current_user)
 
     rescue Stripe::CardError => e
       flash[:error] = e.message

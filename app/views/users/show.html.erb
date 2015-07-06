@@ -1,0 +1,26 @@
+<div class="col-md-8">
+  <div class="tabbable tabs-left">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#my-wikis" data-toggle="tab"><%= @user.username %>'s Wikis</a></li>
+      <li><a href="#shared-wikis" data-toggle="tab">Shared Wikis</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="my-wikis"><br>
+        <% @wikis.each do |wiki| %>
+          <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="shared-wikis"><br>
+        <% @shared_wikis.each do |wiki| %>
+          <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-4">
+  <%= render partial: 'users/user', locals: {user: @user} %>
+  <% if current_user %>
+    <%= render partial: 'users/controls' %>
+  <% end %>
+</div>
