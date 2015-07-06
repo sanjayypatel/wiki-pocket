@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :users, only: [:update] do
     post 'downgrade' => 'users#downgrade', as: :downgrade 
   end
-  resources :wikis
+  resources :wikis do 
+      resources :collaborations, only: [:create, :destroy]
+  end
   resources :charges, only: [:new, :create]
   root to: 'welcome#index'
 

@@ -4,8 +4,18 @@ class WikiPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    Wiki.where(:id => record.id).exists?
+  end
+
   def update?
-    user.present? && ((user.admin? || record.user == user) || record.public?)
+    user.present? && (
+      record.public? || (
+        user.admin? ||
+        record.user == user ||
+        record.users.include?(user)
+      )
+    )
   end
 
   def edit?
@@ -22,15 +32,17 @@ class WikiPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
+      wikis = nil
       if !user.present?
-        public_records
+        wikis = public_records
       elsif user.standard?
-        public_records + shared_records
+        wikis = (public_records + shared_records).uniq
       elsif user.admin?
-        scope.all
+        wikis = scope.all
       elsif user.premium?
-        public_records + private_and_owned_records + shared_records
+        wikis = (public_records + private_and_owned_records + shared_records).uniq
       end
+      return sorted_by_last_updated(wikis)
     end
 
     private
@@ -47,6 +59,9 @@ class WikiPolicy < ApplicationPolicy
       scope.joins(:collaborations).where("collaborations.user_id == #{user.id}")
     end
 
+    def sorted_by_last_updated(records)
+      records.sort_by{|e| e.updated_at }.reverse!
+    end
 
   end
 

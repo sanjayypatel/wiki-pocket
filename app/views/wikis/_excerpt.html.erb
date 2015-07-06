@@ -5,10 +5,5 @@
   </div>
   <div class="panel-body">
     <p><%= truncate(wiki.body, length: 150) %> </p>
-    <p>
-      <% wiki.users.each do |user| %>
-        <%= user.username %><br>
-      <% end %>
-    </p>
   </div>
 </div>

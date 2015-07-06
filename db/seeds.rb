@@ -1,3 +1,4 @@
+# Specific Users
 user = User.new(
   username: "admin",
   email: "admin@example.com",
@@ -7,14 +8,14 @@ user = User.new(
 user.skip_confirmation!
 user.save!
 
-user = User.new(
+premium = User.new(
   username: "premium",
   email: "premium@example.com",
   password: 'helloworld',
   role: 'premium'
   )
-user.skip_confirmation!
-user.save!
+premium.skip_confirmation!
+premium.save!
 
 user = User.new(
   username: "member",
@@ -24,6 +25,7 @@ user = User.new(
 user.skip_confirmation!
 user.save!
 
+# Seed Users
 7.times do |n|
 
   user = User.new(
@@ -35,7 +37,9 @@ user.save!
   user.save!
 end
 users = User.all
+standard_users = User.where(role: 'standard')
 
+# Seed Wikis
 20.times do |n|
 
   wiki = Wiki.new(
@@ -45,6 +49,30 @@ users = User.all
     user: users.sample
     )
   wiki.save!
+
+end
+wikis = Wiki.all
+
+# Seed Private Wikis
+5.times do |n|
+
+  wiki = premium.wikis.build(
+    title: "Private Wiki Title #{n}",
+    body: Faker::Lorem.paragraph(10),
+    private: true
+  )
+  wiki.save!
+
+end
+private_wikis = Wiki.where(private: true)
+
+# Seed Collaborations
+5.times do 
+  collaboration = Collaboration.new(
+    wiki: private_wikis.sample,
+    user: standard_users.sample
+  )
+  collaboration.save!
 
 end
 

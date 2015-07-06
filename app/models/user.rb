@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
 
   validates :username, uniqueness: true
 
+  scope :all_except, -> (user){ where.not(id: user) }
+  scope :exclude_collaborators, -> (wiki){where.not(id: wiki.users)}
+
   after_initialize :init
 
   def admin?
@@ -24,7 +27,7 @@ class User < ActiveRecord::Base
     role == 'standard'
   end
 
-  def is_owner_of(wiki)
+  def is_owner_of?(wiki)
     admin? || (premium? && (wiki.user == self || wiki.new_record?))
   end
 

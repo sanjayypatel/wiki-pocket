@@ -1,8 +1,8 @@
 <div class="btn-group pull-right wiki-heading-button-group">
   <% if wiki.public? %>
-    <p class="btn btn-sm btn-primary">Public</p>
+    <p class="btn btn-sm btn-primary disabled">Public</p>
   <% else %>
-    <p class="btn btn-sm btn-warning">Private</p>
+    <p class="btn btn-sm btn-warning disabled">Private</p>
   <% end %>
   <%= link_to wiki.user.username, edit_user_registration_path, class: 'btn btn-sm btn-info' %>
   <% if policy(wiki).edit? %>

@@ -5,4 +5,7 @@
   <% if current_user %>
     <%= render partial: 'users/controls' %>
   <% end %>
+  <% if @wiki.private? %>
+    <%= render partial: 'collaborations/collaborators', locals: { wiki: @wiki, collaboration: @collaboration } %>
+  <% end %>
 </div>
