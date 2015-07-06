@@ -1,0 +1,20 @@
+<div class="col-md-8">
+  <% if current_user.standard? %>
+    <%= render partial: 'charges/upgrade', locals: {stripe_btn_data: @stripe_btn_data} %>
+  <% elsif current_user.premium? %>
+    <%= render 'downgrade' %>
+  <% end %>
+</div>
+<div class="col-md-4">
+  <h2>Premium Accounts can:</h2>
+  <ul>
+    <li>Create private wikis</li>
+    <li>Add collaborators to your private wikis.</li>
+    <li>Edit your private wikis or wikis shared with you.</li>
+  </ul>
+  <h2>Standard Accounts can:</h2>
+  <ul>
+    <li>Create public wikis.</li>
+    <li>Edit any public wiki.</li>
+  </ul>
+</div>

@@ -10,6 +10,11 @@ class UsersController < ApplicationController
     redirect_to edit_user_registration_path
   end
 
+  def downgrade
+    current_user.downgrade
+    redirect_to edit_user_registration_path(current_user)
+  end
+
   private
 
   def user_params
