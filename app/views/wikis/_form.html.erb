@@ -15,6 +15,20 @@
   </div>
   <div class="form-group">
     <%= f.label :body %>
-    <%= f.text_area :body, class: 'form-control', rows: 20, autofocus: true, autocomplete: false %>
+    <div id="epiceditor"><%= f.text_area :body, id: 'my-edit-area', autocomplete: false %></div>
   </div>
+  <script>
+    var opts = {
+      theme: {
+        base: '/themes/base/epiceditor.css',
+        preview: '/themes/preview/preview-light.css',
+        editor: '/themes/editor/epic-light.css'
+      },
+      autogrow: {
+        scroll: true,
+        minHeight: 10000
+      }
+    }
+    var editor = new EpicEditor().load(opts);
+  </script>
 <% end %>

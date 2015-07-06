@@ -68,6 +68,8 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
+    epic-editor-rails (0.2.4)
+      railties (>= 3.2, < 5.0)
     erubis (2.7.0)
     execjs (2.5.2)
     faker (1.4.3)
@@ -201,6 +203,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  epic-editor-rails
   faker
   figaro
   jbuilder (~> 2.0)

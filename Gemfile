@@ -69,3 +69,5 @@ gem 'pundit'
 gem 'stripe'
 
 gem 'redcarpet'
+
+gem 'epic-editor-rails'
