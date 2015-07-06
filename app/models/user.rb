@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def is_owner_of?(wiki)
-    admin? || (premium? && (wiki.user == self || wiki.new_record?))
+    admin? || wiki.user == self || wiki.new_record?
   end
 
   def init
