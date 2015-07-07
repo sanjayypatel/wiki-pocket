@@ -20,5 +20,9 @@ class Wiki < ActiveRecord::Base
     self.private = false if self.private.nil?
   end
 
+  def is_owned_by?(user)
+    self.users.include?(user)
+  end
+
 end
 

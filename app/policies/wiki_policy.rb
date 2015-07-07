@@ -5,7 +5,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def show?
-    Wiki.where(:id => record.id).exists?
+    Wiki.where(:id => record.id).exists? && update?
   end
 
   def update?
