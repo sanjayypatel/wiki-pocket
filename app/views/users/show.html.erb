@@ -12,9 +12,7 @@
       </div>
       <div class="tab-pane" id="shared-wikis"><br>
         <% @shared_wikis.each do |wiki| %>
-          <% if user_signed_in? && wiki.is_owned_by?(current_user) %>
-            <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
-          <% end %>
+          <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
         <% end %>
       </div>
     </div>
