@@ -11,10 +11,10 @@
 <% end %>
   <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control', autofocus: true, autocomplete: false %>
+    <%= f.text_field :title, class: 'form-control', autofocus: true, autocomplete: :off %>
   </div>
   <div class="form-group">
     <%= f.label :body %>
-    <%= f.text_area :body, class: 'form-control', rows: 20, autofocus: true, autocomplete: false %>
+    <%= f.text_area :body, class: 'form-control', rows: 20, autofocus: true, autocomplete: :off %>
   </div>
 <% end %>

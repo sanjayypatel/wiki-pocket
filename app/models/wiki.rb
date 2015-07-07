@@ -1,5 +1,8 @@
 class Wiki < ActiveRecord::Base
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :user
   has_many :collaborations
   has_many :users, through: :collaborations
@@ -7,6 +10,9 @@ class Wiki < ActiveRecord::Base
   scope :most_recently_updated, -> { order('updated_at DESC') }
   scope :only_private, -> { where(:private => true) }
   after_initialize :init
+
+  validates :title, presence: true, uniqueness: true
+
 
   def public?
     !private?

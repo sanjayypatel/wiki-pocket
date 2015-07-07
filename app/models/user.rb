@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  extend FriendlyId
+  friendly_id :username, use: :slugged
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :wikis
   has_many :shared_wikis, through: :collaborations, source: :wiki
 
-  validates :username, uniqueness: true
+  validates :username, presence: true, uniqueness: true
 
   scope :all_except, -> (user){ where.not(id: user) }
   scope :exclude_collaborators, -> (wiki){where.not(id: wiki.users)}

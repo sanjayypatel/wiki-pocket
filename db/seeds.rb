@@ -1,6 +1,6 @@
 # Specific Users
 user = User.new(
-  username: "admin",
+  username: "admin user",
   email: "admin@example.com",
   password: 'helloworld',
   role: 'admin'
@@ -9,7 +9,7 @@ user.skip_confirmation!
 user.save!
 
 premium = User.new(
-  username: "premium",
+  username: "premium user",
   email: "premium@example.com",
   password: 'helloworld',
   role: 'premium'
@@ -18,7 +18,7 @@ premium.skip_confirmation!
 premium.save!
 
 user = User.new(
-  username: "member",
+  username: "member user",
   email: "member@example.com",
   password: 'helloworld'
   )

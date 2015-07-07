@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     authorized_wikis = policy_scope(Wiki)
     @wikis = authorized_wikis.select { |w| @user.is_owner_of?(w) }
     @shared_wikis = authorized_wikis.select { |w| w.is_owned_by?(@user) }
