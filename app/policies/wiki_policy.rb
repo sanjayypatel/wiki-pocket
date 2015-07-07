@@ -32,7 +32,6 @@ class WikiPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      wikis = nil
       if !user.present?
         wikis = public_records
       elsif user.standard?
@@ -56,7 +55,7 @@ class WikiPolicy < ApplicationPolicy
     end
 
     def shared_records
-      scope.joins(:collaborations).where("collaborations.user_id == #{user.id}")
+      scope.joins(:collaborations).where("collaborations.user_id = #{user.id}")
     end
 
     def sorted_by_last_updated(records)
