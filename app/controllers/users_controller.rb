@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     authorized_wikis = policy_scope(Wiki)
     @wikis = authorized_wikis.select{ |w| @user.is_owner_of?(w) }.paginate(page: params[:page], per_page: 5)
     @shared_wikis = authorized_wikis.select { |w| w.is_owned_by?(@user) }.paginate(page: params[:page], per_page: 5)
+    @links = @user.links.paginate(page: params[:page], per_page: 5)
   end
 
   def update

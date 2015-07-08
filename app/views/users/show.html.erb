@@ -3,6 +3,7 @@
     <ul class="nav nav-tabs">
       <li class="active"><a href="#my-wikis" data-toggle="tab"><%= @user.username %>'s Wikis</a></li>
       <li><a href="#shared-wikis" data-toggle="tab">Shared Wikis</a></li>
+      <li><a href="#my-links" data-toggle="tab"><%= @user.username %>'s Links</a></li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="my-wikis"><br>
@@ -16,6 +17,12 @@
           <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
         <% end %>
         <%= will_paginate @shared_wikis %>
+      </div>
+      <div class="tab-pane" id="my-links"><br>
+        <% @links.each do |link| %>
+          <%= render partial: 'links/link', locals: {link: link} %>
+        <% end %>
+        <%= will_paginate @links %>
       </div>
     </div>
   </div>

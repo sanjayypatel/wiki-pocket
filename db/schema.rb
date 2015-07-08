@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708180234) do
+ActiveRecord::Schema.define(version: 20150708210907) do
 
   create_table "collaborations", force: :cascade do |t|
     t.integer  "user_id"
@@ -35,6 +35,26 @@ ActiveRecord::Schema.define(version: 20150708180234) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "links", force: :cascade do |t|
+    t.string   "url"
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "links", ["user_id"], name: "index_links_on_user_id"
+
+  create_table "references", force: :cascade do |t|
+    t.integer  "wiki_id"
+    t.integer  "link_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "references", ["link_id"], name: "index_references_on_link_id"
+  add_index "references", ["wiki_id"], name: "index_references_on_wiki_id"
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"

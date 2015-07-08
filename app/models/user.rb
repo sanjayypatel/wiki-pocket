@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :collaborations
   has_many :wikis
   has_many :shared_wikis, through: :collaborations, source: :wiki
+  has_many :links
 
   validates :username, presence: true, uniqueness: true
 

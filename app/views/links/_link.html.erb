@@ -1,0 +1,10 @@
+<div class="panel panel-warning">
+  <div class="panel-heading clearfix">
+    <h4 class="pull-left"><%= link_to link.title, link.url %></h4>
+  </div>
+  <div class="panel-body">
+    <p>Url: <%= link_to link.url, link.url %></p>
+    <p>User: <%= link.user.username %></p>
+    <p>Wikis: <%= link.wikis.count %>, <small><%= link_to "See All", link_path(link) %></small></p>
+  </div>
+</div>

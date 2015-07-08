@@ -3,6 +3,6 @@
     <h4 class="pull-left">Tag: <%= link_to tag.name, tag_path(tag) %></h4>
   </div>
   <div class="panel-body">
-    <p>Wikis: <%= tag.taggings.count%></p>
+    <p>Used <%= pluralize(tag.taggings.count, 'time') %>.</p>
   </div>
 </div>

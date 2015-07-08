@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :wikis do 
       resources :collaborations, only: [:create, :destroy]
   end
+
+  resources :links, only: [:show]
+
   resources :charges, only: [:new, :create]
   root to: 'welcome#index'
   get '/help', to: 'welcome#help'

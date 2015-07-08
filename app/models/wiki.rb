@@ -8,6 +8,9 @@ class Wiki < ActiveRecord::Base
   belongs_to :user
   has_many :collaborations
   has_many :users, through: :collaborations
+  
+  has_many :references
+  has_many :links, through: :references
 
   scope :most_recently_updated, -> { order('updated_at DESC') }
   scope :only_private, -> { where(:private => true) }
