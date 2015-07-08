@@ -39,6 +39,20 @@ end
 users = User.all
 standard_users = User.where(role: 'standard')
 
+# Seed Tags
+
+50.times do
+
+  word = Faker::Lorem.characters(5)
+  tag = ActsAsTaggableOn::Tag.new(
+    name: word,
+    slug: word
+  )
+  tag.save!
+
+end
+tags = ActsAsTaggableOn::Tag.all
+
 # Seed Wikis
 20.times do |n|
 
@@ -48,6 +62,7 @@ standard_users = User.where(role: 'standard')
     private: false,
     user: users.sample
     )
+  wiki.tag_list.add tags.sample.name
   wiki.save!
 
 end
@@ -61,6 +76,7 @@ wikis = Wiki.all
     body: Faker::Lorem.paragraph(10),
     private: true
   )
+  wiki.tag_list.add tags.sample.name
   wiki.save!
 
 end
@@ -79,3 +95,5 @@ end
 puts "Finished Seeding."
 puts "#{User.count} users created."
 puts "#{Wiki.count} wikis created."
+puts "#{Collaboration.count} collaborations created."
+puts "#{ActsAsTaggableOn::Tag.count} tags created."

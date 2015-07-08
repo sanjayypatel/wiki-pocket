@@ -1,0 +1,12 @@
+<h1><%= @tag.name %></h1>
+<div class="col-md-8">
+  <% @wikis.each do |wiki| %>
+    <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
+  <% end %>
+  <%= will_paginate @wikis %>
+</div>
+<div class="col-md-4">
+  <% if current_user %>
+    <%= render partial: 'users/controls' %>
+  <% end %>
+</div>

@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
   get '/help', to: 'welcome#help'
 
+  resources :tags, only: [:show, :index]
+
 end

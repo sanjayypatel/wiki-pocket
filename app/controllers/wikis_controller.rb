@@ -1,6 +1,10 @@
 class WikisController < ApplicationController
   def index
-    @wikis = policy_scope(Wiki).paginate(page: params[:page], per_page: 10)
+    if params[:tag]
+      @wikis = policy_scope(Wiki).paginate(page: params[:page], per_page: 10)
+    else
+      @wikis = policy_scope(Wiki).paginate(page: params[:page], per_page: 10)
+    end
   end
 
   def show
@@ -59,7 +63,7 @@ class WikisController < ApplicationController
   private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :private)
+    params.require(:wiki).permit(:title, :body, :private, :tag_list)
   end
 
 end

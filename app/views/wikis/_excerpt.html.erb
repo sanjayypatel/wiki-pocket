@@ -6,4 +6,7 @@
   <div class="panel-body">
     <p><%= truncate(wiki.body, length: 150) %> </p>
   </div>
+  <div class="panel-footer">
+    <p>Tags: <%= tags_to_links(wiki.tag_list) %></p>
+  </div>
 </div>
