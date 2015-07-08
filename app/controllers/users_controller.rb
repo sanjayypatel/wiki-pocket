@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   def show
     @user = User.friendly.find(params[:id])
     authorized_wikis = policy_scope(Wiki)
-    @wikis = authorized_wikis.select { |w| @user.is_owner_of?(w) }
-    @shared_wikis = authorized_wikis.select { |w| w.is_owned_by?(@user) }
+    @wikis = authorized_wikis.select{ |w| @user.is_owner_of?(w) }.paginate(page: params[:page], per_page: 5)
+    @shared_wikis = authorized_wikis.select { |w| w.is_owned_by?(@user) }.paginate(page: params[:page], per_page: 5)
   end
 
   def update

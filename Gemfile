@@ -71,3 +71,5 @@ gem 'stripe'
 gem 'redcarpet'
 
 gem 'friendly_id', '~> 5.1.0'
+
+gem 'will_paginate', '~> 3.0.5'

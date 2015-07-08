@@ -9,11 +9,13 @@
         <% @wikis.each do |wiki| %>
           <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
         <% end %>
+        <%= will_paginate @wikis %>
       </div>
       <div class="tab-pane" id="shared-wikis"><br>
         <% @shared_wikis.each do |wiki| %>
           <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
         <% end %>
+        <%= will_paginate @shared_wikis %>
       </div>
     </div>
   </div>
