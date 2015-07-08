@@ -1,12 +1,9 @@
 <div class="col-md-8">
-  <h1>Most Popular Tags</h1>
   <% @tags.each do |tag| %>
     <%= render partial: 'tags/tag', locals: {tag: tag} %>
   <% end %>
   <%= will_paginate @tags %>
 </div>
 <div class="col-md-4">
-  <% if current_user %>
-    <%= render partial: 'users/controls' %>
-  <% end %>
+  <%= render partial: 'users/controls' %>
 </div>

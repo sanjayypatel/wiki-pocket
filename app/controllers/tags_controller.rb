@@ -7,8 +7,11 @@ class TagsController < ApplicationController
   end
 
   def index
-    @tags = ActsAsTaggableOn::Tag.most_used(100).paginate(page: params[:page], per_page: 10)
-    
+    if params[:tag_search]
+      @tags = ActsAsTaggableOn::Tag.where('name LIKE ?', "%#{params[:tag_search]}%").paginate(page: params[:page], per_page: 10)
+    else
+      @tags = ActsAsTaggableOn::Tag.most_used(100).paginate(page: params[:page], per_page: 10)
+    end
   end
 
 end

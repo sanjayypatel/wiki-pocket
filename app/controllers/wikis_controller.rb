@@ -1,7 +1,8 @@
 class WikisController < ApplicationController
   def index
-    if params[:tag]
-      @wikis = policy_scope(Wiki).paginate(page: params[:page], per_page: 10)
+    if params[:search]
+      @wikis = Wiki.search(params[:search])
+      @wikis = @wikis.select{ |w| policy(w).show? }.paginate(page: params[:page], per_page: 10)
     else
       @wikis = policy_scope(Wiki).paginate(page: params[:page], per_page: 10)
     end

@@ -1,6 +1,6 @@
-<div class="panel panel-info">
+<div class="panel panel-success">
   <div class="panel-heading clearfix">
-    <h4 class="pull-left"><%= link_to tag.name, tag_path(tag) %></h4>
+    <h4 class="pull-left">Tag: <%= link_to tag.name, tag_path(tag) %></h4>
   </div>
   <div class="panel-body">
     <p>Wikis: <%= tag.taggings.count%></p>

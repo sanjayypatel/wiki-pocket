@@ -32,5 +32,13 @@ class Wiki < ActiveRecord::Base
     self.users.include?(user)
   end
 
+  def self.search(keyword)
+    title_matched_wikis = Wiki.where('title LIKE ?', "%#{keyword}%")
+    body_matched_wikis = Wiki.where('body LIKE ?', "%#{keyword}%")
+    search_tags = keyword.split(' ')
+    tag_matched_wikis = Wiki.tagged_with(search_tags, any: true)
+    return title_matched_wikis + body_matched_wikis + tag_matched_wikis
+  end
+
 end
 

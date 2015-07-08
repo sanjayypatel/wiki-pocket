@@ -4,9 +4,7 @@
 </div>
 
 <div class="col-md-4">
-  <% if current_user %>
-    <%= render partial: 'users/controls' %>
-  <% end %>
+  <%= render partial: 'users/controls' %>
   <% if @wiki.private? %>
     <%= render partial: 'collaborations/collaborators', locals: { wiki: @wiki, collaboration: @collaboration } %>
   <% end %>
