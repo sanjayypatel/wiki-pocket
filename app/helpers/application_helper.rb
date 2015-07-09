@@ -24,11 +24,19 @@ module ApplicationHelper
     tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe
   end
 
-  def nav_pane_tag(page, page_type, pane_id, &block)
-    if page == page_type
-      content_tag :div, capture(&block), class: "tab-pane active", id: pane_id
+  def nav_tab_tag(active_tab, checked_tab, &block)
+    if active_tab == checked_tab
+      content_tag :li, capture(&block), class: "active"
     else
-      content_tag :div, capture(&block), class: "tab-pane", id: pane_id
+      content_tag :li, capture(&block), class: nil
+    end
+  end
+
+  def nav_pane_tag(active_tab, checked_tab, &block)
+    if active_tab == checked_tab
+      content_tag :div, capture(&block), class: "tab-pane active", id: checked_tab
+    else
+      content_tag :div, capture(&block), class: "tab-pane", id: checked_tab
     end
   end
 

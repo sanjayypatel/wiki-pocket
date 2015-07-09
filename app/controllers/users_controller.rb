@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     @wikis = authorized_wikis.select{ |w| @user.is_owner_of?(w) }.paginate(page: params[:page], per_page: 5)
     @shared_wikis = authorized_wikis.select { |w| w.is_owned_by?(@user) }.paginate(page: params[:page], per_page: 5)
     @links = @user.links.paginate(page: params[:page], per_page: 5)
+    @active_tab = params[:tab]
+
   end
 
   def update
@@ -28,6 +30,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username)
   end
-
 
 end

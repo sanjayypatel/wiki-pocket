@@ -1,37 +1,37 @@
 <div class="col-md-8">
   <div class="tabbable tabs-left">
     <ul class="nav nav-tabs">
-      <li class="active">
-        <%= link_to "#{@user.username}'s Wikis", user_path(@user, anchor: 'my-wikis', tab: "wikis", page: 1), "data-toggle" => "tab" %>
-      </li>
-      <li>
-        <%= link_to "Shared Wikis", user_path(@user, anchor: 'shared-wikis'), "data-toggle" => "tab", tab: "shared", page: 1 %>
-      </li>
-      <li>
-        <%= link_to "#{@user.username}'s Links",user_path(@user, anchor: 'my-links'), "data-toggle" => "tab", tab: "links", page: 1 %>
-      </li>
+      <%= nav_tab_tag(@active_tab, "my-wikis") do %>
+        <a href="<%= user_path(@user, tab: 'my-wikis' ) %>" ><%= "#{@user.username}'s Wikis" %></a>
+      <% end %>
+      <%= nav_tab_tag(@active_tab, "shared-wikis") do %>
+        <%= link_to "Shared Wikis", user_path(@user, tab: 'shared-wikis') %>
+      <% end %> 
+      <%= nav_tab_tag(@active_tab, "my-links") do %>
+        <%= link_to "#{@user.username}'s Links", user_path(@user, tab: 'my-links') %>
+      <% end %>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane active" id="my-wikis"><br>
+      <%= nav_pane_tag(@active_tab, 'my-wikis') do %><br>
+        <%= will_paginate @wikis %>
         <% @wikis.each do |wiki| %>
           <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
         <% end %>
-        <%= will_paginate @wikis %>
-      </div>
+      <% end %>
 
-      <div class="tab-pane" id="shared-wikis"><br>
+      <%= nav_pane_tag(@active_tab, 'shared-wikis') do %><br>
+        <%= will_paginate @shared_wikis %>
         <% @shared_wikis.each do |wiki| %>
           <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
         <% end %>
-        <%= will_paginate @shared_wikis %>
-      </div>
+      <% end %>
 
-      <div class="tab-pane" id="my-links"><br>
+      <%= nav_pane_tag(@active_tab, 'my-links') do %><br>
+        <%= will_paginate @links %>
         <% @links.each do |link| %>
           <%= render partial: 'links/link', locals: {link: link} %>
         <% end %>
-        <%= will_paginate @links %>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
