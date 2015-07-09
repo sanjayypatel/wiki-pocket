@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :show
 
   def show
     @user = User.friendly.find(params[:id])
@@ -7,8 +7,7 @@ class UsersController < ApplicationController
     @wikis = authorized_wikis.select{ |w| @user.is_owner_of?(w) }.paginate(page: params[:page], per_page: 5)
     @shared_wikis = authorized_wikis.select { |w| w.is_owned_by?(@user) }.paginate(page: params[:page], per_page: 5)
     @links = @user.links.paginate(page: params[:page], per_page: 5)
-    @active_tab = params[:tab]
-
+    @active_tab = params[:tab] || "my-wikis"
   end
 
   def update
