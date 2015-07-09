@@ -1,4 +1,5 @@
 <div class="col-md-8">
+  <%= render partial: 'links/link', locals: {link: @link} %>
   <h1><%= @link.title %>'s Wikis</h1>
   <% @wikis.each do |wiki| %>
     <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>

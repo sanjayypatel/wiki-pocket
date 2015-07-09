@@ -1,0 +1,9 @@
+<div class="btn-group pull-right panel-heading-button-group">
+  <%= link_to link.user.username, user_path(link.user), class: 'btn btn-sm btn-info' %>
+  <% if policy(link).edit? %>
+    <%= link_to "Edit", edit_link_path(link), class: 'btn btn-sm btn-success' %>
+  <% end %>
+  <% if policy(link).destroy? %>
+    <%= link_to "Delete", link, method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure you want to delete this link?' } %> 
+  <% end %>
+</div>

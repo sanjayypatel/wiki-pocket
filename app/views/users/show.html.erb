@@ -2,7 +2,7 @@
   <div class="tabbable tabs-left">
     <ul class="nav nav-tabs">
       <%= nav_tab_tag(@active_tab, "my-wikis") do %>
-        <a href="<%= user_path(@user, tab: 'my-wikis' ) %>" ><%= "#{@user.username}'s Wikis" %></a>
+        <%= link_to "#{@user.username}'s Wikis", user_path(@user, tab: 'my-wikis') %>
       <% end %>
       <%= nav_tab_tag(@active_tab, "shared-wikis") do %>
         <%= link_to "Shared Wikis", user_path(@user, tab: 'shared-wikis') %>

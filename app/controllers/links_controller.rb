@@ -24,6 +24,24 @@ class LinksController < ApplicationController
     @wikis = linked_wikis.select { |w| policy(w).show? }.paginate(page: params[:page], per_page: 10)
   end
 
+  def edit
+    @link = Link.find(params[:id])
+    authorize @link
+  end
+
+  def update
+    @link = Link.find(params[:id])
+    authorize @link
+    if @link.update_attributes(link_params)
+      flash[:notice] = "Link edit succesfully."
+      redirect_to @link
+    else
+      flash[:error] = "There was an error editing link. Please try again."
+      render :edit
+    end
+  end
+
+
   private
 
   def link_params

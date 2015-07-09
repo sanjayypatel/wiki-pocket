@@ -1,9 +1,29 @@
 <div class="col-md-8">
   <h1>Tag: <%= @tag.name %></h1>
-  <% @wikis.each do |wiki| %>
-    <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
-  <% end %>
-  <%= will_paginate @wikis %>
+  <div class="tabbable tabs-left">
+    <ul class="nav nav-tabs">
+      <%= nav_tab_tag(@active_tab, "tagged-wikis") do %>
+        <%= link_to "Tagged Wikis", tag_path(@tag, tab: 'tagged-wikis') %>
+      <% end %>
+      <%= nav_tab_tag(@active_tab, "tagged-links") do %>
+        <%= link_to "Tagged Links", tag_path(@tag, tab: 'tagged-links') %>
+      <% end %>
+    </ul>
+    <div class="tab-content">
+      <%= nav_pane_tag(@active_tab, 'tagged-wikis') do %><br>
+        <%= will_paginate @wikis %>
+        <% @wikis.each do |wiki| %>
+          <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
+        <% end %>
+      <% end %>
+      <%= nav_pane_tag(@active_tab, 'tagged-links') do %><br>
+        <%= will_paginate @links %>
+        <% @links.each do |link| %>
+          <%= render partial: 'links/link', locals: {link: link} %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <div class="col-md-4">
   <% if current_user %>
