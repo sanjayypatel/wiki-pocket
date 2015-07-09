@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :collaborations, only: [:create, :destroy]
   end
 
-  resources :links, only: [:show]
+  resources :links, only: [:show, :new, :create]
 
   resources :charges, only: [:new, :create]
   root to: 'welcome#index'

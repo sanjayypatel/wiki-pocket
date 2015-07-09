@@ -1,9 +1,15 @@
 <div class="col-md-8">
   <div class="tabbable tabs-left">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#my-wikis" data-toggle="tab"><%= @user.username %>'s Wikis</a></li>
-      <li><a href="#shared-wikis" data-toggle="tab">Shared Wikis</a></li>
-      <li><a href="#my-links" data-toggle="tab"><%= @user.username %>'s Links</a></li>
+      <li class="active">
+        <%= link_to "#{@user.username}'s Wikis", user_path(@user, anchor: 'my-wikis', tab: "wikis", page: 1), "data-toggle" => "tab" %>
+      </li>
+      <li>
+        <%= link_to "Shared Wikis", user_path(@user, anchor: 'shared-wikis'), "data-toggle" => "tab", tab: "shared", page: 1 %>
+      </li>
+      <li>
+        <%= link_to "#{@user.username}'s Links",user_path(@user, anchor: 'my-links'), "data-toggle" => "tab", tab: "links", page: 1 %>
+      </li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="my-wikis"><br>
@@ -12,12 +18,14 @@
         <% end %>
         <%= will_paginate @wikis %>
       </div>
+
       <div class="tab-pane" id="shared-wikis"><br>
         <% @shared_wikis.each do |wiki| %>
           <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
         <% end %>
         <%= will_paginate @shared_wikis %>
       </div>
+
       <div class="tab-pane" id="my-links"><br>
         <% @links.each do |link| %>
           <%= render partial: 'links/link', locals: {link: link} %>

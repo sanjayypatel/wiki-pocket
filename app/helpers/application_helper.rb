@@ -24,4 +24,12 @@ module ApplicationHelper
     tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe
   end
 
+  def nav_pane_tag(page, page_type, pane_id, &block)
+    if page == page_type
+      content_tag :div, capture(&block), class: "tab-pane active", id: pane_id
+    else
+      content_tag :div, capture(&block), class: "tab-pane", id: pane_id
+    end
+  end
+
 end

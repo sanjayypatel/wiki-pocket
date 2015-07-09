@@ -5,17 +5,17 @@
   <% if current_user.is_owner_of?(wiki) && current_user.premium? %>
     <div class="form-group">
       <%= f.label :private, class: 'checkbox' do %>
-      <%= f.check_box :private %> Private wiki
-    <% end %>
-  </div>
-<% end %>
+        <%= f.check_box :private %> Private wiki
+      <% end %>
+    </div>
+  <% end %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control', autofocus: true, autocomplete: :off %>
   </div>
   <div class="form-group">
     <%= f.label :body %>
-    <%= f.text_area :body, class: 'form-control', rows: 20, autofocus: true, autocomplete: :off %>
+    <%= f.text_area :body, class: 'form-control', rows: 20, autocomplete: :off %>
   </div>
   <div class="form-group">
     <%= f.label :tag_list, "Tags (separated by commas)" %>

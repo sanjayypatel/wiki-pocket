@@ -7,6 +7,7 @@
       <% if user_signed_in? %>
         <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-default' %>
       <% end %>
+      <%= link_to "New Link", new_link_path, class: 'btn btn-warning' %>
       <%= link_to "Help", help_path, class: 'btn btn-success' %>
     </div>
     <div class="search-form">

@@ -1,7 +1,7 @@
 class CollaborationsController < ApplicationController
 
   def create
-    @wiki = Wiki.find(params[:wiki_id])
+    @wiki = Wiki.friendly.find(params[:wiki_id])
     @user = User.where('username LIKE ?', "%#{params[:search]}%")
               .all_except(current_user)
               .exclude_collaborators(@wiki)
@@ -20,7 +20,7 @@ class CollaborationsController < ApplicationController
   end
 
   def destroy
-    @wiki = Wiki.find(params[:wiki_id])
+    @wiki = Wiki.friendly.find(params[:wiki_id])
     @collaboration = Collaboration.find(params[:id])
     if @collaboration.destroy
        flash[:notice] = "Member removed from wiki."

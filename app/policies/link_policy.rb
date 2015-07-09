@@ -1,7 +1,15 @@
 class LinkPolicy < ApplicationPolicy
 
   def show?
-    user_signed_in?
+    user.present?
+  end
+
+  def new?
+    show?
+  end
+
+  def create?
+    show?
   end
 
 end
