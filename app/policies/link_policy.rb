@@ -13,11 +13,15 @@ class LinkPolicy < ApplicationPolicy
   end
 
   def edit?
-    update?
+    show?
   end
 
   def update?
-    user.present? && (user.admin? || record.user == user)
+    show?
+  end
+
+  def destroy?
+    show?
   end
 
 end

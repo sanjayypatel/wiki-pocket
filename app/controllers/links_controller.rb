@@ -41,6 +41,17 @@ class LinksController < ApplicationController
     end
   end
 
+  def destroy
+    @link = Link.find(params[:id])
+    authorize @link
+    if @link.destroy
+      flash[:alert] = "Link, \"#{@link.title}\" deleted succesfully."
+      redirect_to wikis_path
+    else
+      flash[:error] = "There was an error deleting link. Please try again."
+      render :show
+    end
+  end
 
   private
 
