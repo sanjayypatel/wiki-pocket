@@ -1,0 +1,12 @@
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <%= form_for [wiki, reference] do |f| %>
+      <p>
+        <%= f.submit "Add", class: 'btn btn-xs btn-success' %>
+        <%= link.title %>: <%= link_to link.url, link.url %>
+        <%= f.hidden_field :link_id, value: link.id %>
+      </p>
+      <small>Tags: <%= tags_to_links(link.tag_list) %></small>
+    <% end %>
+  </div>
+</div>

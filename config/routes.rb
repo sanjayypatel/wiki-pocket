@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
   resources :wikis do 
       resources :collaborations, only: [:create, :destroy]
+      resources :references, only: [:create, :destroy]
   end
 
   resources :links, except: [:index]

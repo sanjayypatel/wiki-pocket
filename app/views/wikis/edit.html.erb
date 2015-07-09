@@ -1,6 +1,15 @@
 <div class="col-md-8">
-  <h1>Edit <%= @wiki.title %></h1>
-  <%= render partial: 'wikis/form', locals: {wiki: @wiki} %>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4>Edit <%= @wiki.title %></h4>
+    </div>
+    <div class="panel-body">
+      <%= render partial: 'wikis/form', locals: {wiki: @wiki} %>
+    </div>
+    <div class="panel-footer">
+      <p>Links: <%= render partial: 'references/links', locals: {references: @wiki.references } %></p>
+    </div>
+  </div>
 </div>
 
 <div class="col-md-4">
@@ -8,4 +17,5 @@
   <% if @wiki.private? %>
     <%= render partial: 'collaborations/collaborators', locals: { wiki: @wiki, collaboration: @collaboration } %>
   <% end %>
+  <%= render partial: 'references/edit_panel', locals: { found_links: @found_links } %>
 </div>

@@ -1,0 +1,9 @@
+<%= form_tag(edit_wiki_path, method: "get") do %>
+  <div class="form-group">
+    <%= text_field_tag :search, params[:search], class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= submit_tag "Search", class: 'btn btn-info' %>
+    <small>Search for links by tags (separated by commas).</small>
+  </div>
+<% end %>

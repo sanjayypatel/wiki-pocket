@@ -1,0 +1,4 @@
+<% references.each do |reference| %>
+  <% link = reference.link %>
+  <p><%= link.title %> - <%= link_to "Remove", [reference.wiki, reference], method: :delete, data: { confirm: 'Are you sure you want to remove this link?'} %></p>
+<% end %>

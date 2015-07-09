@@ -1,0 +1,15 @@
+<div class="panel panel-info">
+  <div class="panel-heading clearfix">
+    <h4 class="pull-left">Add Links to Wiki</h4>
+  </div>
+  <div class="panel-body">
+    <% if user_signed_in? %>
+      <%= render partial: 'references/search_form' %>
+    <% end %>
+    <% if found_links %>
+      <% found_links.each do |link| %>
+        <%= render partial: 'links/reference_link', locals: {link: link, reference: @reference, wiki: @wiki} %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
