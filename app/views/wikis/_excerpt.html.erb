@@ -4,7 +4,7 @@
     <%= render partial: 'wikis/controls', locals: {wiki: wiki} %>
   </div>
   <div class="panel-body">
-    <p><%= truncate(wiki.body, length: 150) %></p>
+    <p><%= markdown_to_html truncate(wiki.body, length: 150) %></p>
   </div>
   <div class="panel-footer">
     <p>Links: <%= links_list(wiki.links) %></p>
