@@ -16,11 +16,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 body {
-  padding-top: 70px;
+  padding-top: 2em;
 }
 .panel-heading-button-group {
   padding: 20px 0 0 0;
 }
 .search-form {
   margin-top: 20px;
+}
+label.checkbox{
+  margin-left: 1.5em;
 }
