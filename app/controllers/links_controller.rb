@@ -1,7 +1,5 @@
 class LinksController < ApplicationController
 
-  PocketApi::Connection.client_key = ENV["POCKET_CONSUMER_KEY"]
-
   def index
     if params[:pocket_search]
       @links = []
@@ -81,13 +79,14 @@ class LinksController < ApplicationController
   end
 
   def connect_to_pocket
+    PocketApi::Connection.client_key = ENV["POCKET_CONSUMER_KEY"]
     redirect_to PocketApi::Connection.generate_authorize_url(ENV["AUTHORIZATION_CALLBACK_URL"])
   end
 
   def authorize_callback
     @token = PocketApi::Connection.generate_access_token
-    puts @token
-    PocketApi.configure(client_key: ENV["POCKET_CONSUMER_KEY"], access_token: @token)
+    session[:access_token_hash] = {current_user.id => @token}
+    PocketApi.configure(client_key: ENV["POCKET_CONSUMER_KEY"], access_token: session[:access_token_hash][current_user.id])
     redirect_to links_path
   end
 
