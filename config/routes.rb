@@ -9,12 +9,15 @@ Rails.application.routes.draw do
       resources :references, only: [:create, :destroy]
   end
 
-  resources :links, except: [:index]
+  resources :links
 
   resources :charges, only: [:new, :create]
   root to: 'welcome#index'
   get '/help', to: 'welcome#help'
 
   resources :tags, only: [:show, :index]
+
+  get "connect" => "links#connect_to_pocket", :as => "connect_to_pocket"
+  get "authorize_callback" => "links#authorize_callback", :as => "authorize_callback"
 
 end

@@ -22,8 +22,16 @@ body {
   padding: 20px 0 0 0;
 }
 .search-form {
-  margin-top: 20px;
+  margin: 2em 0;
+  border-top: 1px lightgrey solid;
+  padding-top: 0.75em;
+  p {
+    font-weight: bold;
+  }
 }
 label.checkbox{
   margin-left: 1.5em;
+}
+.authorize-pocket {
+  margin: 1em 0;
 }

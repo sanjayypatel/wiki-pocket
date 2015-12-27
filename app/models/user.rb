@@ -49,4 +49,8 @@ class User < ActiveRecord::Base
     self.update_attribute(:role, 'standard')
   end
 
+  def pocket_authorized?
+    return !PocketApi.access_token.nil?
+  end
+
 end

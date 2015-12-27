@@ -4,6 +4,10 @@ class LinkPolicy < ApplicationPolicy
     user.present?
   end
 
+  def index?
+    show?
+  end
+
   def new?
     show?
   end
@@ -13,7 +17,7 @@ class LinkPolicy < ApplicationPolicy
   end
 
   def edit?
-    show?
+    show? && !record.new_record?
   end
 
   def update?

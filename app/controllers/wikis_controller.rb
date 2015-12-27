@@ -35,10 +35,9 @@ class WikisController < ApplicationController
     @wiki = Wiki.friendly.find(params[:id])
     authorize @wiki
     @collaboration = Collaboration.new
-
     if params[:search]
       @reference = Reference.new
-      @found_links = Link.tagged_with(params[:search], :any => true)
+      @found_links = Link.search(params[:search])
     end
   end
 

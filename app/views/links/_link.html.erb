@@ -1,12 +1,24 @@
 <div class="panel panel-warning">
   <div class="panel-heading clearfix">
-    <h4 class="pull-left"><%= link_to link.title, link_path(link) %></h4>
+    <% if link.new_record? %>
+      <h4 class="pull-left"><%= link.title %></h4>
+    <% else %>
+      <h4 class="pull-left"><%= link_to link.title, link_path(link) %></h4>
+    <% end %>
     <%= render partial: 'links/controls', locals: {link: link} %>
   </div>
   <div class="panel-body">
     <p>Url: <%= link_to link.url, link.url %></p>
     <p>User: <%= link.user.username %></p>
     <p>Wikis: <%= link.wikis.count %></p>
+    <% if link.new_record? %>
+      <%= form_for Link.new do |f| %>
+        <%= f.hidden_field :title, value: link.title %>
+        <%= f.hidden_field :url, value: link.url %>
+        <%= f.hidden_field :user, value: current_user %>
+        <%= f.submit "Save this link to Wiki Pocket", class: 'btn btn-success' %>
+      <% end %>
+    <% end %>
   </div>
   <div class="panel-footer">
     <p>Tags: <%= tags_to_links(link.tag_list) %></p>

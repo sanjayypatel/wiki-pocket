@@ -19,6 +19,9 @@
         <ul class="nav navbar-nav navbar-left">
           <li><%= link_to "Browse Wikis", wikis_path %></li>
           <li><%= link_to "Browse Tags", tags_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Browse Links", links_path %></li>
+          <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
