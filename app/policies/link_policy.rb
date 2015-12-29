@@ -16,6 +16,10 @@ class LinkPolicy < ApplicationPolicy
     show?
   end
 
+  def create_link_with_wiki?
+    show?
+  end
+
   def edit?
     show? && !record.new_record?
   end

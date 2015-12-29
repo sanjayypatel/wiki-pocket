@@ -26,6 +26,10 @@ class WikiPolicy < ApplicationPolicy
     user.present?
   end
 
+  def create_wiki_from_link?
+    create?
+  end
+
   def new?
     create?
   end

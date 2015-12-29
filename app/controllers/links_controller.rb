@@ -42,6 +42,25 @@ class LinksController < ApplicationController
     end
   end
 
+  def create_link_with_wiki
+    @link = current_user.links.build(link_params)
+    authorize @link
+    if @link.save
+      @wiki = current_user.wikis.build(
+        title: @link.title,
+        body: "[#{@link.title}](#{@link.url})"
+      )
+      @wiki.save
+      @reference = @wiki.references.build(link: @link)
+      @reference.save
+      flash[:notice] = "Wiki created and link saved succesfully."
+      redirect_to edit_wiki_path(@wiki)
+    else
+      flash[:error] = "There was an error saving link. Please try again."
+      render :index
+    end
+  end
+
   def show
     @link = Link.find(params[:id])
     authorize @link

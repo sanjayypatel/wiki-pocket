@@ -8,16 +8,18 @@
     <%= render partial: 'links/controls', locals: {link: link} %>
   </div>
   <div class="panel-body">
-    <p>Url: <%= link_to link.url, link.url %></p>
+    <p>Url: <%= link_to link.url, link.url, target: '_blank' %></p>
     <p>User: <%= link.user.username %></p>
     <p>Wikis: <%= link.wikis.count %></p>
     <% if link.new_record? %>
-      <%= form_for Link.new do |f| %>
+      <%= form_for Link.new, :url => create_link_with_wiki_path do |f| %>
         <%= f.hidden_field :title, value: link.title %>
         <%= f.hidden_field :url, value: link.url %>
         <%= f.hidden_field :user, value: current_user %>
-        <%= f.submit "Save this link to Wiki Pocket", class: 'btn btn-success' %>
+        <%= f.submit "Create a New Wiki with this Link.", class: 'btn btn-success' %>
       <% end %>
+    <% else %>
+      <%= link_to "Create a New Wiki with this Link.", create_wiki_from_link_path(link), class: 'btn btn-success' %>
     <% end %>
   </div>
   <div class="panel-footer">

@@ -8,8 +8,10 @@ Rails.application.routes.draw do
       resources :collaborations, only: [:create, :destroy]
       resources :references, only: [:create, :destroy]
   end
+  get 'wikis/create_wiki_from_link/:link_id' => 'wikis#create_wiki_from_link', :as => 'create_wiki_from_link'
 
   resources :links
+  post 'create_link_with_wiki' => "links#create_link_with_wiki", :as => "create_link_with_wiki"
 
   resources :charges, only: [:new, :create]
   root to: 'welcome#index'
