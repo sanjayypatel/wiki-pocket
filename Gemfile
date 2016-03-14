@@ -79,3 +79,5 @@ gem 'newrelic_rpm'
 gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'getpocket'
+
+gem 'jquery-turbolinks'

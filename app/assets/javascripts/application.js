@@ -11,7 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
+//= require wikitoggle.js
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
