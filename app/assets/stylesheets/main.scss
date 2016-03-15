@@ -1,0 +1,143 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+@import "variables";
+@mixin links ($link, $visit, $hover, $active) {
+  a {
+    color: $link;
+    &:visited {
+      color: $visit;
+    }
+    &:hover {
+      color: $hover;   
+    }
+    &:active {
+      color: $active;
+    }
+  }
+}
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+a {
+  text-decoration: none;
+}
+body {
+  margin: 0;
+}
+.app-header,
+.sidebar {
+  display: inline-block;
+  margin: 0;
+}
+nav {
+  padding: 20px 20px;
+  .nav-logo {
+    display: inline-block;
+    padding: 0 20px 0 0;
+    img {
+      width: 100px;
+      vertical-align: text-top;
+    }
+  }
+  ul {
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    li {
+      display: inline-block;
+      margin: 0;
+    }
+  }
+  ul.nav-left {
+    li{
+      padding: 5px 20px 5px 0;
+    }
+  }
+  ul.nav-right {
+    float: right;
+    li {
+      padding: 5px 0 5px 20px;
+    }
+  }
+}
+.app-header {
+  width: 75%;
+  a {
+    color: $main-color;
+  }
+}
+.sidebar {
+  float: right;
+  background: $sidebar-color;
+  width: 25%;
+  max-width: 350px;
+  height: 100vh;
+  a {
+    color: white;
+  }
+}
+.main-content {
+  width: 75%;
+  padding: 0;
+  margin: 0;
+}
+.flash {
+  display: inline-block;
+  padding: 0 10px;
+  color: $highlight-color;
+  .close-flash {
+    border: none;
+    background: $highlight-color;
+    color: white;
+    min-width: 25px;
+    min-height: 25px;
+    border-radius: 2px;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  nav {
+    padding: 0;
+    .nav-logo {
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+      padding: 20px 0;
+      img {
+        width: 150px;
+      }
+    }
+    ul.nav-right {
+      float: none;
+    }
+    ul.nav-left li,
+    ul.nav-right li {
+      padding: 10px 10px;
+    }
+
+  }
+  .app-header,
+  .main-content{
+    width: 100%;
+  }
+  .sidebar {
+    float: none;
+    height: 60px;
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid $sidebar-color;
+    a {
+      color: $main-color;
+    }
+  }
+}
+
+
+
+.hidden {
+  display: none;
+}

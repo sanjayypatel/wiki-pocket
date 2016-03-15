@@ -1,7 +1,7 @@
 <div class="col-md-8">
   <%= render partial: 'wikis/wiki', locals: {wiki: @wiki} %>
 </div>
-<div class="col-md-4">
+<div class="hidden">
   <%= render partial: 'users/controls' %>
   <% if @wiki.private? %>
     <%= render partial: 'collaborations/collaborators', locals: { wiki: @wiki, collaboration: @collaboration } %>

@@ -1,3 +1,36 @@
-// Place all the styles related to the Wikis controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
+.wiki-panel {
+  padding: 0 0 0 20px;
+  width: 80%;
+  margin: 0 auto;
+  a {
+    color: $highlight-color;
+  }
+}
+.wiki-header {
+  margin: 0;
+  padding: 0 0 10px 0;
+}
+.wiki-title {
+  display: inline-block;
+  padding-right: 20px;
+  color: $main-color;
+}
+ul.wiki-controls {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    padding-right: 20px;
+  }
+}
+.wiki-body {
+  padding-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .wiki-panel {
+    width: 100%;
+  }
+}
