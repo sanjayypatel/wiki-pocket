@@ -22,23 +22,23 @@
             <li><%= link_to "Browse Links", links_path %></li>
           <% end %>
         </ul>
+        <% if flash[:notice] %>
+          <div class="flash">
+            <button type="button" class="close-flash" data-dismiss="alert">&times;</button>
+            <%= flash[:notice] %>
+          </div>
+          <% elsif flash[:error] %>
+          <div class="flash">
+            <button type="button" class="close-flash" data-dismiss="alert">&times;</button>
+            <%= flash[:error] %>
+          </div>
+        <% elsif flash[:alert] %>
+          <div class="flash">
+            <button type="button" class="close-flash" data-dismiss="alert">&times;</button>
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
       </nav>
-      <% if flash[:notice] %>
-        <div class="alert alert-success">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:notice] %>
-        </div>
-        <% elsif flash[:error] %>
-        <div class="alert alert-danger">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:error] %>
-        </div>
-      <% elsif flash[:alert] %>
-        <div class="alert alert-warning">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
     </div>
     <div class="sidebar">
       <nav>

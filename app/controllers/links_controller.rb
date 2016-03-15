@@ -77,7 +77,7 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     authorize @link
     if @link.update_attributes(link_params)
-      flash[:notice] = "Link edit succesfully."
+      flash[:notice] = "Link edited succesfully."
       redirect_to @link
     else
       flash[:error] = "There was an error editing link. Please try again."

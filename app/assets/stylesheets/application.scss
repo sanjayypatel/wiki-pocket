@@ -99,6 +99,20 @@ nav {
   padding: 0 0 0 20px;
   margin: 0;
 }
+.flash {
+  display: inline-block;
+  padding: 0 10px;
+  color: $sidebar-color;
+  .close-flash {
+    border: none;
+    background: $sidebar-color;
+    color: white;
+    min-width: 25px;
+    min-height: 25px;
+    border-radius: 2px;
+    text-align: center;
+  }
+}
 @media (max-width: 768px) {
   nav {
     padding: 0;
