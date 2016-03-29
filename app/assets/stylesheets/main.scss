@@ -1,19 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
-@import "variables";
-@mixin links ($link, $visit, $hover, $active) {
-  a {
-    color: $link;
-    &:visited {
-      color: $visit;
-    }
-    &:hover {
-      color: $hover;   
-    }
-    &:active {
-      color: $active;
-    }
-  }
-}
+@import "global";
+
+/**************************************
+  Main Layout Styles
+**************************************/
 * {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -66,7 +56,8 @@ nav {
 }
 .app-header {
   width: 75%;
-  a {
+  a,
+  a:visited {
     color: $main-color;
   }
 }
@@ -126,8 +117,9 @@ nav {
   }
   .sidebar {
     float: none;
-    height: 60px;
+    min-height: 60px;
     width: 100%;
+    max-width: none;
     background: white;
     border-bottom: 1px solid $sidebar-color;
     a {
@@ -135,9 +127,26 @@ nav {
     }
   }
 }
-
-
-
+/**************************************
+  Form Styles
+**************************************/
+input.form-field {
+  border-radius: 15px;
+  text-indent: 10px;
+  box-shadow: none;
+  border: none;
+  min-height: 30px;
+  width: 100%;
+  margin: 5px 0;
+}
+@media (max-width: 768px) {
+  input.form-field {
+    border: 1px solid $emphasis-color;
+  }
+}
+/**************************************
+  Utility Styles
+**************************************/
 .hidden {
   display: none;
 }

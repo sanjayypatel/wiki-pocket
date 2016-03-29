@@ -2,7 +2,6 @@
   <%= render partial: 'wikis/wiki', locals: {wiki: @wiki} %>
 </div>
 <div class="hidden">
-  <%= render partial: 'users/controls' %>
   <% if @wiki.private? %>
     <%= render partial: 'collaborations/collaborators', locals: { wiki: @wiki, collaboration: @collaboration } %>
   <% end %>

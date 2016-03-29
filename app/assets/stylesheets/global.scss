@@ -1,0 +1,25 @@
+$main-color: #5F6770;
+$sidebar-color: rgba(95, 103, 112, 0.8);
+$highlight-color: #5685b7;
+$emphasis-color: #424242;
+
+
+.wp-button {
+  border: none;
+  background: $highlight-color;
+  color: white;
+  min-width: 25px;
+  min-height: 25px;
+  border-radius: 2px;
+  text-align: center;
+}
+.wp-button:hover {
+  background: $emphasis-color;
+  outline: 0;
+}
+.wp-button:focus {
+  background: $emphasis-color;
+}
+.wp-button:active{
+  background: $highlight-color;
+}

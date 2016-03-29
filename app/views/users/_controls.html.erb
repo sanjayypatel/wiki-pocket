@@ -1,69 +1,63 @@
-<div class="panel panel-info">
-  <div class="panel-heading">
-    <h4>Options</h4>
-  </div>
-  <div class="panel-body">
-    <div class="btn-group">
-      <% if user_signed_in? %>
-        <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-info' %>
-        <%= link_to "New Link", new_link_path, class: 'btn btn-warning' %>
-      <% else %>
-        <%= link_to "Sign In", new_user_session_path, class: 'btn btn-info' %>
-        <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %>
-      <% end %>
-      <%= link_to "Help", help_path, class: 'btn btn-success' %>
-    </div>
-    <div class="search-form">
-      <p>Search wiki titles, content and tags.</p>
-      <%= form_tag wikis_path, method: :get do %>
-        <div class="form-group">
-          <%= text_field_tag :search, params[:search], class: 'form-control', autocomplete: :off %>
-        </div>
-        <div class="form-group">
-          <%= submit_tag "Search Wikis", class: 'btn btn-info' %>
-        </div>
-      <% end %>
-    </div>
+<div class="user-controls">
+  <ul class="user-links">
     <% if user_signed_in? %>
+      <li><%= link_to "New Wiki", new_wiki_path, class: 'btn btn-info' %></li>
+      <li><%= link_to "New Link", new_link_path, class: 'btn btn-warning' %></li>
+    <% else %>
+      <li><%= link_to "Sign In", new_user_session_path, class: 'btn btn-info' %></li>
+      <li><%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %></li>
+    <% end %>
+  </ul>
+  <div class="search-form">
+    <p>Search wiki titles, content and tags.</p>
+    <%= form_tag wikis_path, method: :get do %>
+      <div class="form-group">
+        <%= text_field_tag :search, params[:search], class: 'form-field', autocomplete: :off %>
+      </div>
+      <div class="form-group">
+        <%= submit_tag "Search Wikis", class: 'wp-button' %>
+      </div>
+    <% end %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="search-form">
+      <p>Search links.</p>
+      <%= form_tag links_path, method: :get do %>
+        <div class="form-group">
+          <%= text_field_tag :search, params[:search], class: 'form-field', autocomplete: :off %>
+        </div>
+        <div class="form-group">
+          <%= submit_tag "Search Links", class: 'wp-button' %>
+        </div>
+      <% end %>
+    </div>
+    <%if current_user.pocket_authorized? %>
       <div class="search-form">
-        <p>Search links.</p>
+        <p>Search your Pocket account for saved links.</p>
         <%= form_tag links_path, method: :get do %>
           <div class="form-group">
-            <%= text_field_tag :search, params[:search], class: 'form-control', autocomplete: :off %>
+            <%= text_field_tag :pocket_search, params[:pocket_search], class: 'form-field', autocomplete: :off %>
           </div>
           <div class="form-group">
-            <%= submit_tag "Search Links", class: 'btn btn-success' %>
+            <%= submit_tag "Search Pocket for Links", class: 'wp-button' %>
           </div>
         <% end %>
       </div>
-      <%if current_user.pocket_authorized? %>
-        <div class="search-form">
-          <p>Search your Pocket account for saved links.</p>
-          <%= form_tag links_path, method: :get do %>
-            <div class="form-group">
-              <%= text_field_tag :pocket_search, params[:pocket_search], class: 'form-control', autocomplete: :off %>
-            </div>
-            <div class="form-group">
-              <%= submit_tag "Search Pocket for Links", class: 'btn btn-success' %>
-            </div>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="authorize-pocket">
-          <%= link_to "Authorize your Pocket Account", connect_to_pocket_path, class: 'btn btn-success' %>
-        </div>
-      <% end %>
+    <% else %>
+      <div class="authorize-pocket">
+        <%= button_to "Authorize your Pocket Account", connect_to_pocket_path, class: 'wp-button', method: 'get' %>
+      </div>
     <% end %>
-    <div class="search-form">
-      <p>Search tags.</p>
-      <%= form_tag tags_path, method: :get do %>
-        <div class="form-group">
-          <%= text_field_tag :tag_search, params[:tag_search], class: 'form-control', autocomplete: :off %>
-        </div>
-        <div class="form-group">
-          <%= submit_tag "Search Tags", class: 'btn btn-success' %>
-        </div>
-      <% end %>
-    </div>
+  <% end %>
+  <div class="search-form">
+    <p>Search tags.</p>
+    <%= form_tag tags_path, method: :get do %>
+      <div class="form-group">
+        <%= text_field_tag :tag_search, params[:tag_search], class: 'form-field', autocomplete: :off %>
+      </div>
+      <div class="form-group">
+        <%= submit_tag "Search Tags", class: 'wp-button' %>
+      </div>
+    <% end %>
   </div>
 </div>
