@@ -1,28 +1,28 @@
-<div class="panel panel-warning">
-  <div class="panel-heading clearfix">
+<div class="excerpt-panel">
+  <div class="excerpt-header">
     <% if link.new_record? %>
-      <h4 class="pull-left"><%= link.title %></h4>
+      <h4><%= link.title %></h4>
     <% else %>
-      <h4 class="pull-left"><%= link_to link.title, link_path(link) %></h4>
+      <h4><%= link_to link.title, link_path(link) %></h4>
     <% end %>
-    <%= render partial: 'links/controls', locals: {link: link} %>
   </div>
-  <div class="panel-body">
+  <div class="excerpt-content">
+    <%= render partial: 'links/controls', locals: {link: link} %>
     <p>Url: <%= link_to link.url, link.url, target: '_blank' %></p>
-    <p>User: <%= link.user.username %></p>
-    <p>Wikis: <%= link.wikis.count %></p>
+    <ul class="link-info">
+      <li>User: <%= link.user.username %></li>
+      <li>Wikis: <%= link.wikis.count %></li>
+      <li>Tags: <%= tags_to_links(link.tag_list) %></li>
+    </uL>
     <% if link.new_record? %>
       <%= form_for Link.new, :url => create_link_with_wiki_path do |f| %>
         <%= f.hidden_field :title, value: link.title %>
         <%= f.hidden_field :url, value: link.url %>
         <%= f.hidden_field :user, value: current_user %>
-        <%= f.submit "Create a New Wiki with this Link.", class: 'btn btn-success' %>
+        <%= f.submit "Create a New Wiki with this Link." %>
       <% end %>
     <% else %>
-      <%= link_to "Create a New Wiki with this Link.", create_wiki_from_link_path(link), class: 'btn btn-success' %>
+      <%= link_to "Create a New Wiki with this Link.", create_wiki_from_link_path(link) %>
     <% end %>
-  </div>
-  <div class="panel-footer">
-    <p>Tags: <%= tags_to_links(link.tag_list) %></p>
   </div>
 </div>

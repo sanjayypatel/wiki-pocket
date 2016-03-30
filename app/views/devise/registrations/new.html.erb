@@ -1,4 +1,4 @@
-<div class="col-md-6 col-md-offset-3">
+<div class="static-content">
   <h1>Sign up</h1>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
@@ -19,7 +19,7 @@
       <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Enter password confirmation" %>
     </div>
     <div class="form-group">
-      <%= f.submit "Sign up", class: 'btn btn-default' %>
+      <%= f.submit "Sign up", class: 'wp-button' %>
     </div>
     <div class="form-group">
       <%= render "devise/shared/links" %>

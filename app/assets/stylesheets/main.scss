@@ -127,11 +127,13 @@ nav {
     }
   }
 }
-.static-content {
-  padding-left: 20px;
-}
+.static-content,
 .paginated-content {
   padding-left: 20px;
+  a,
+  a:visited {
+    color: $highlight-color;
+  }
 }
 
 /**************************************
@@ -149,6 +151,29 @@ input.form-field {
 @media (max-width: 768px) {
   input.form-field {
     border: 1px solid $emphasis-color;
+  }
+}
+.form-group {
+  padding: 10px;
+}
+.sidebar-form-group {
+  padding: 0 0 5px 0;
+}
+.form-group,
+.sidebar-form-group {
+  label {
+    display: block;
+    padding: 0 0 10px 5px;
+  }
+  input.form-control {
+    border-radius: 15px;
+    text-indent: 10px;
+    border: 1px solid $emphasis-color;
+    min-height: 30px;
+    width: 100%;
+  }
+  .checkbox input{
+    margin-right: 5px;
   }
 }
 /**************************************

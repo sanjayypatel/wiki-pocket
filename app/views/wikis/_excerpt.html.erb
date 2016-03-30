@@ -1,9 +1,9 @@
-<div class="panel panel-info">
-  <div class="panel-heading clearfix">
-    <h4 class="pull-left"><%= link_to wiki.title, wiki_path(wiki) %></h4>
-    <%= render partial: 'wikis/controls', locals: {wiki: wiki} %>
+<div class="excerpt-panel">
+  <div class="excerpt-header">
+    <h4 class="excerpt-title"><%= link_to wiki.title, wiki_path(wiki) %></h4>
   </div>
-  <div class="panel-footer">
+  <div class="excerpt-controls">
+    <%= render partial: 'wikis/controls', locals: {wiki: wiki} %>
     <p>Links: <%= links_list(wiki.links) %></p>
     <p>Tags: <%= tags_to_links(wiki.tag_list) %></p>
   </div>
