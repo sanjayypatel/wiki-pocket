@@ -1,4 +1,4 @@
-<div class="col-md-8">
+<div class="paginated-content">
   <% @wikis.each do |wiki| %>
     <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
   <% end %>
