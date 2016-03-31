@@ -1,4 +1,4 @@
-<div class="col-md-8">
+<div class="static-content">
   <div class="panel panel-info">
     <div class="panel-heading">
       <h4>Edit <%= @wiki.title %></h4>
@@ -10,8 +10,6 @@
       <p>Links: <%= render partial: 'references/links', locals: {references: @wiki.references } %></p>
     </div>
   </div>
-</div>
-<div class="col-md-4">
   <% if @wiki.private? %>
     <%= render partial: 'collaborations/collaborators', locals: { wiki: @wiki, collaboration: @collaboration } %>
   <% end %>

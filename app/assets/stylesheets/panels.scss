@@ -1,4 +1,7 @@
 @import "global";
+
+// Wiki styles
+
 .wiki-panel {
   padding: 0 0 0 20px;
   width: 80%;
@@ -36,7 +39,12 @@ ul.wiki-controls {
   }
 }
 
-// Exccerpt Styles
+textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+// Excerpt Styles
 
 .excerpt-panel {
   margin-bottom: 40px;
