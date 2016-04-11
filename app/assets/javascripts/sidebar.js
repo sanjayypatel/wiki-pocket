@@ -13,8 +13,7 @@ $(document).on('page:load', ready);
 function checkSize(){
   var sidebar = $(".sidebar");
     if (sidebar.css("float") == "none" ){
-      console.log("float is none");
-      sidebar.css("min-height", "60px");
+      sidebar.css("min-height", "10px");
     } else {
       sidebar.css("min-height", $(document).height() + 60);
   }

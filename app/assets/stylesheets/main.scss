@@ -116,7 +116,7 @@ nav {
   }
   .sidebar {
     float: none;
-    min-height: 60px;
+    min-height: 10px;
     width: 100%;
     max-width: none;
     background: white;
@@ -182,3 +182,30 @@ input.form-field {
 .hidden {
   display: none;
 }
+
+/**************************************
+  Menu Show/Hide Styles
+**************************************/
+.wp-collapse.wp-block {
+  display: block;
+}
+.wp-collapse.wp-inline-block {
+  display: inline-block;
+}
+.wp-reveal {
+  display: none;
+  text-align: center;
+  color: $main-color;
+}
+@media (max-width: 768px) {
+  .wp-collapse.wp-block,
+  .wp-collapse.wp-inline-block {
+    display: none;
+  }
+  .wp-reveal{
+    display: block;
+  }
+}
+
+
+
