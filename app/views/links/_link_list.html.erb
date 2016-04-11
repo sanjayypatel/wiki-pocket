@@ -1,0 +1,6 @@
+<% links.each do |link| %>
+  <p>
+    <%= render partial: 'links/link', locals: {link: link} %>
+  </p>
+<% end %>
+<%= will_paginate links %>

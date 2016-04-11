@@ -1,0 +1,4 @@
+<% wikis.each do |wiki| %>
+  <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
+<% end %>
+<%= will_paginate wikis %>

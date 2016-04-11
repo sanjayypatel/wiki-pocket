@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   def show
     @user = User.friendly.find(params[:id])
     authorized_wikis = policy_scope(Wiki)
-    @wikis = authorized_wikis.select{ |w| @user.is_owner_of?(w) }.paginate(page: params[:page], per_page: 5)
-    @shared_wikis = authorized_wikis.select { |w| w.is_owned_by?(@user) }.paginate(page: params[:page], per_page: 5)
-    @links = @user.links.paginate(page: params[:page], per_page: 5)
+    @user_wikis = authorized_wikis.select{ |w| @user.is_owner_of?(w) }.paginate(page: params[:page], per_page: 5)
+    # @shared_wikis = authorized_wikis.select { |w| w.is_owned_by?(@user) }.paginate(page: params[:page], per_page: 5)
+    # @links = @user.links.paginate(page: params[:page], per_page: 5)
     @active_tab = params[:tab] || "my-wikis"
   end
 
@@ -23,6 +23,24 @@ class UsersController < ApplicationController
   def downgrade
     current_user.downgrade
     redirect_to user_path(current_user)
+  end
+
+  def selected_tab
+    puts params[:tab]
+    @user = User.friendly.find(params[:id])
+    if params[:tab] == "my-wikis"
+      authorized_wikis = policy_scope(Wiki)
+      @tab_content = authorized_wikis.select{ |w| @user.is_owner_of?(w) }.paginate(page: params[:page], per_page: 5)
+    elsif params[:tab] == "shared-wikis"
+      authorized_wikis = policy_scope(Wiki)
+      @tab_content = authorized_wikis.select { |w| w.is_owned_by?(@user) }.paginate(page: params[:page], per_page: 5)
+    elsif params[:tab] == "my-links"
+      @tab_content = @user.links.paginate(page: params[:page], per_page: 5)
+    end
+    @active_tab = params[:tab]
+    respond_to do |format|
+        format.js
+    end
   end
 
   private

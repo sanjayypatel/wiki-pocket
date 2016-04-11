@@ -1,0 +1,13 @@
+console.log('selected_tab.js');
+$(".selected-tab").removeClass('selected-tab');
+<% if @active_tab == 'my-links' %>
+  $("#selected-list").html("<%= escape_javascript(render partial: 'links/link_list', locals: { links: @tab_content } ) %>"); 
+  $("#my-links").addClass('selected-tab');
+<% else%>
+  $("#selected-list").html("<%= escape_javascript(render partial: 'wikis/wiki_list', locals: { wikis: @tab_content } ) %>"); 
+  <% if @active_tab == 'my-wikis' %>
+    $("#my-wikis").addClass('selected-tab');
+  <% else %>
+    $("#shared-wikis").addClass('selected-tab');
+  <% end %>
+<% end %>

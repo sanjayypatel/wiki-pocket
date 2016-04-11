@@ -1,3 +1,5 @@
+@import "global";
+
 .user-controls {
   margin-top: 40px;
   padding: 0 10px;
@@ -9,6 +11,16 @@
     display: inline-block;
     padding-right: 20px;
   }
+}
+.profile-tab {
+  padding: 10px;
+  margin: 0;
+}
+.profile-tab.selected-tab {
+  border: 1px solid $main-color;
+}
+.profile-tab:hover {
+  background: #eaeaea;
 }
 @media (max-width: 768px) {
   .user-controls {

@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   get "connect" => "links#connect_to_pocket", :as => "connect_to_pocket"
   get "authorize_callback" => "links#authorize_callback", :as => "authorize_callback"
 
+  get "/fetch_tab/:id" => 'users#selected_tab', as: 'fetch_tab', format: 'js'
 end

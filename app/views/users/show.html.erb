@@ -1,38 +1,11 @@
 <div class="paginated-content">
   <%= render partial: 'users/user', locals: {user: @user} %>
-  <div class="tabbable tabs-left">
-    <ul class="nav nav-tabs">
-      <%= nav_tab_tag(@active_tab, "my-wikis") do %>
-        <%= link_to "#{@user.username}'s Wikis", user_path(@user, tab: 'my-wikis') %>
-      <% end %>
-      <%= nav_tab_tag(@active_tab, "shared-wikis") do %>
-        <%= link_to "Shared Wikis", user_path(@user, tab: 'shared-wikis') %>
-      <% end %> 
-      <%= nav_tab_tag(@active_tab, "my-links") do %>
-        <%= link_to "#{@user.username}'s Links", user_path(@user, tab: 'my-links') %>
-      <% end %>
-    </ul>
-    <div class="tab-content">
-      <%= nav_pane_tag(@active_tab, 'my-wikis') do %><br>
-        <%= will_paginate @wikis %>
-        <% @wikis.each do |wiki| %>
-          <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
-        <% end %>
-      <% end %>
-
-      <%= nav_pane_tag(@active_tab, 'shared-wikis') do %><br>
-        <%= will_paginate @shared_wikis %>
-        <% @shared_wikis.each do |wiki| %>
-          <%= render partial: 'wikis/excerpt', locals: {wiki: wiki} %>
-        <% end %>
-      <% end %>
-
-      <%= nav_pane_tag(@active_tab, 'my-links') do %><br>
-        <%= will_paginate @links %>
-        <% @links.each do |link| %>
-          <%= render partial: 'links/link', locals: {link: link} %>
-        <% end %>
-      <% end %>
-    </div>
+  <div>
+    <%= link_to "#{@user.username}'s Wikis", fetch_tab_path(@user, tab: 'my-wikis'), :remote => true, class: 'profile-tab selected-tab', id: 'my-wikis' %>
+    <%= link_to "Shared Wikis", fetch_tab_path(@user, tab: 'shared-wikis'), :remote => true, class: 'profile-tab', id: 'shared-wikis' %>
+    <%= link_to "#{@user.username}'s Links", fetch_tab_path(@user, tab: 'my-links'), :remote => true, class: 'profile-tab', id: 'my-links'  %>
+  </div>
+  <div id="selected-list">
+    <%= render partial: 'wikis/wiki_list', locals: {wikis: @user_wikis} %>
   </div>
 </div>
