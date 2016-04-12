@@ -1,4 +1,5 @@
 <div class="paginated-content">
+  <h1>Tags</h1>
   <% @tags.each do |tag| %>
     <%= render partial: 'tags/tag', locals: {tag: tag} %>
   <% end %>

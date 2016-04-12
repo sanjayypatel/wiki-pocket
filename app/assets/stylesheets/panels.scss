@@ -69,3 +69,15 @@ ul.link-info {
     margin: 0;
   }
 }
+
+// Tag Styles
+
+.tag-panel {
+  padding: 0;
+  width: 80%;
+  margin: 0;
+  a,
+  a:visited {
+    color: $highlight-color;
+  }
+}

@@ -1,9 +1,8 @@
-<div class="panel panel-success">
-  <div class="panel-heading clearfix">
-    <h4 class="pull-left">Tag: <%= link_to tag.name, tag_path(tag) %></h4>
+<div class="tag-panel">
+  <div class="tag-header">
+    <h4 class="">"<%= link_to tag.name, tag_path(tag) %>"</h4>
   </div>
-  <div class="panel-body">
+  <div class="">
     <p>Used <%= pluralize(tag.taggings.count, 'time') %>.</p>
-    
   </div>
 </div>
