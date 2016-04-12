@@ -50,7 +50,7 @@ group :development, :test do
 end
 
 # Include Twitter Bootstrap - Sass for styling
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 
 # Devise for User Authentication
 gem 'devise'
