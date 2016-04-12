@@ -12,15 +12,20 @@
     padding-right: 20px;
   }
 }
-.profile-tab {
-  padding: 10px;
-  margin: 0;
-}
-.profile-tab.selected-tab {
-  border: 1px solid $main-color;
-}
-.profile-tab:hover {
-  background: #eaeaea;
+.profile-tab-group {
+  padding: 0;
+  margin: 40px 0;
+  .profile-tab {
+    padding: 10px;
+    margin: 0 30px 0 0;
+    border: 2px solid #eaeaea;
+  }
+  .profile-tab.selected-tab {
+    border: 2px solid $main-color;
+  }
+  .profile-tab:hover {
+    background: #eaeaea;
+  }
 }
 @media (max-width: 768px) {
   .user-controls {

@@ -6,8 +6,10 @@
       <h4><%= link_to link.title, link_path(link) %></h4>
     <% end %>
   </div>
-  <div class="excerpt-content">
+  <div class="excerpt-controls">
     <%= render partial: 'links/controls', locals: {link: link} %>
+  </div>
+  <div class="excerpt-content">
     <p>Url: <%= link_to link.url, link.url, target: '_blank' %></p>
     <ul class="link-info">
       <li>User: <%= link.user.username %></li>

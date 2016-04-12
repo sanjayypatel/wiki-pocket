@@ -1,6 +1,6 @@
 <div class="paginated-content">
   <%= render partial: 'users/user', locals: {user: @user} %>
-  <div>
+  <div class="profile-tab-group">
     <%= link_to "#{@user.username}'s Wikis", fetch_tab_path(@user, tab: 'my-wikis'), :remote => true, class: 'profile-tab selected-tab', id: 'my-wikis' %>
     <%= link_to "Shared Wikis", fetch_tab_path(@user, tab: 'shared-wikis'), :remote => true, class: 'profile-tab', id: 'shared-wikis' %>
     <%= link_to "#{@user.username}'s Links", fetch_tab_path(@user, tab: 'my-links'), :remote => true, class: 'profile-tab', id: 'my-links'  %>
